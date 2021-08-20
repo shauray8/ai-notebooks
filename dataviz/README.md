@@ -12,6 +12,8 @@
 - How popular has my name been over time?
 - How many sexual partners have people of Britain had?
 - A friend in the US has just given birth to a full-term baby weighing 6 lb (2.91kg). She has been told this is below average and is concerned. Is weight unusually low?
+- Cost analysis of statue of unity 
+-
 
 
 #### all the questions are from a book called the art of statistics by David Spiegelhalter.
