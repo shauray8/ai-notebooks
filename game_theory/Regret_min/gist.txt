@@ -1,0 +1,89 @@
+An introduction to Counterfactual Regret Minimization 
+---
+
+players reach equilibrium play by tracking regrets for past plays, making future plays proportional to positive regrets 
+
+this is a simple and intuative technique (atleast this is what is written in the paper)
+
+this paper shows an example of a classic game of Rock Paper and Scissors 
+
+Section 2 --
+  rock paper and scissors is also called Roshambo (facts)
+  what does it mean to play such a game optimally or perfectly 
+  maximizing wins minus losses depends on how the opponent plays 
+
+  some termenologies --
+    we define normal form game as a tuple (N,A,u) where:
+      N = {1,...,n} is a finite set of n players 
+      S_i is a finite set of actions for player i
+      A = S_1 * ... * S_n is the set of all possible combinations of simultaneous actions of all players 
+      u is a function mapping each action profile to a vector of utilities for rach player
+
+      A normal-form of game is commanly known as "one short game" since every player only makes one move
+
+          R     P     S
+      R   0,0  -1,1   1,-1
+      P   1,-1  0,0  -1,1
+      S  -1,1   1,-1  0,0
+
+      row player is player1 and column player is player2
+
+      a player plays with pure strategy of the player chooses a single action with probability 1. a player playes a mixed stratergies if the player has at least two actions that are played with positive probabs
+
+      A best response strategy for players i is one that, given all other player stratefies maximizes expected utility for player i. 
+
+      When every player is playing with a best response strategy to each of the other players strategies, the combination of strategies is called NASH EQUILIBRIUM. No player can expect to improve play by changing strategy alone. 
+
+      Nash Equilibrium -- is a set of strategies, one for each player, such that no player has incentive to change his or her strategy given what the other player is doing 
+
+      Battle of SEXES -- 
+            M     G
+        M  2,1   0,0
+        G  0,0   1,2
+
+        gary would like to go to a football game and minica wants to see a movie 
+        they both prefer going together to the same activity, yet each feels less rewarded for choosing the other's preference.
+
+        the utility is always (1,2) or (2,1) so MM and GG are two pure nash equilibria profiles. 
+          
+        however there is a mixed nash equilibria as well 
+        -- game matrix 
+
+                  heads       tails
+        heads     1,-1        -1,1
+        tails     -1,1        1,-1 
+
+        there is no pure nash equilibria so there has to exist a mixed strategy nash equilibria.
+
+Section 2.3 -- 
+  if we play RPS for money and the start of the game we keep 1 dollar each and whoever wins takes both the dollars and the utility for the player who losses is -1 
+
+  instead of doing rock and lossing the prev play we would have done paper or scissors which whould have given us 0 or 1.
+
+  we regret not playing paper but we regret not playing scissors more !
+  
+  how to calculate regret --
+    u(paper, paper) - u(rock, paper) = 0-(-1) = 1
+    u(scissors, paper) - u(rock, paper) = 1-(-1) = 2
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Jar --
+  imperfect recall abstractions 
