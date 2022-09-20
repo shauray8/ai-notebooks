@@ -129,5 +129,10 @@ dmypy.json
 .pyre/
 
 ./data
+<<<<<<< HEAD
 mnist_scratch/tmp
 beautify/assets/
+=======
+
+./mnist_scratch/tmp/*
+>>>>>>> 428f1bd37a0159ddafcb9f19c43ada0ee4e575c6
