@@ -129,4 +129,5 @@ dmypy.json
 .pyre/
 
 ./data
-./mnist_scratch/tmp
+mnist_scratch/tmp
+beautify/assets/
