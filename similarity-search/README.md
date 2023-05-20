@@ -13,3 +13,7 @@ Do I have to train a model for embeddings or similarity search or maybe I can le
 21 - gather dataset and store it into json
 22 - gather more data, make a website, compile all of it together, deploy on google cloud run
 23 - make an youtube video, write readme, document and comment well
+
+
+All of this can be done pretty easily with chatgpt actually ! Only thing I have to do is to compile all of it together and get all the parsing done which would take most of the time !
+
