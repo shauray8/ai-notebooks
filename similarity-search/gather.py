@@ -1,6 +1,19 @@
 import requests
 from bs4 import BeautifulSoup
 
+
+def myntraa():
+    pass
+
+def amazon():
+    pass
+
+def ajio():
+    pass
+
+def other():
+    pass
+
 # Send a GET request to the Nykaa search page
 url = "https://www.nykaa.com/search/result/?q=Clothing"
 response = requests.get(url)
