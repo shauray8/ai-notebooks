@@ -17,3 +17,8 @@ Do I have to train a model for embeddings or similarity search or maybe I can le
 
 All of this can be done pretty easily with chatgpt actually ! Only thing I have to do is to compile all of it together and get all the parsing done which would take most of the time !
 
+---
+Create a network <br>
+
+main --> contains all of it with arguments (train, test) with train we first call "gather.py" then after the data is parsed it goes to "embedd.py" and gets converted to embeddings which then gets stored to a JSON file with all the embeddings and the URL ! and then its stored into FAISS for better similarity search. now when test is called it checks for similarity into the faiss database and then it searches for the same embedding in the json file to return the url !
+
