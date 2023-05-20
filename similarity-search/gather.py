@@ -39,11 +39,12 @@ def nykaa(URL):
         # Extract product name
         product_url = item.find('a', {'class': 'css-qlopj4'}).get("href")
         # Print the extracted information
-        product_response = requests.get("https://nykaa.com/"+product_url)
+        print("https://www.nykaa.com"+product_url)
+        product_response = requests.get("https://www.nykaa.com"+product_url)
+        print(product_response)
         product_soup = BeautifulSoup(product_response.text, 'html.parser')
-        disc = product_soup.find('div', class_ = "description-expand css-98gl1e")
-        print("Product URL:", disc)
-
+        disc = product_soup.find_all("p")
+        print("Product URL:", [disc])
         print("----------------------------------------")
         pass
 
