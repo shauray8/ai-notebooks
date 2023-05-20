@@ -22,3 +22,9 @@ Create a network <br>
 
 main --> contains all of it with arguments (train, test) with train we first call "gather.py" then after the data is parsed it goes to "embedd.py" and gets converted to embeddings which then gets stored to a JSON file with all the embeddings and the URL ! and then its stored into FAISS for better similarity search. now when test is called it checks for similarity into the faiss database and then it searches for the same embedding in the json file to return the url !
 
+
+<br><br>
+
+
+Explain everything piece by piece and explain the possibility of using a normal charset for embeddings 
+
