@@ -40,11 +40,12 @@ def nykaa(URL):
         product_url = item.find('a', {'class': 'css-qlopj4'}).get("href")
         # Print the extracted information
         print("https://www.nykaa.com"+product_url)
-        product_response = requests.get("https://www.nykaa.com"+product_url)
-        print(product_response)
-        product_soup = BeautifulSoup(product_response.text, 'html.parser')
-        disc = product_soup.find_all("p")
-        print("Product URL:", [disc])
+        product_response = requests.get("https://www.nykaa.com/rsvp-by-nykaa-fashion-beige-the-power-of-coord-set/p/5216375?productId=5216375&pps=1&skuId=5216351")
+        product_soup = BeautifulSoup(product_response.content, 'html.parser')
+        print(product_soup.find("div"))
+        disc = product_soup.find_all("p", class_ = False)
+        
+        print("Product URL:", disc)
         print("----------------------------------------")
         pass
 
