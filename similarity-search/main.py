@@ -19,7 +19,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.mode == "test":
         print(create_embeddings(args.prompt))
-
     else:
         parse_data(args.site, args.prompt)
     pass
