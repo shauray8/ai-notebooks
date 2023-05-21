@@ -22,6 +22,13 @@ def myntraa():
     pass
 
 def amazon():
+    URL = "https://www.amazon.in/s?k=clothing&i=apparel&ref=nb_sb_noss_1"
+    response = requests.get(URL)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    clothing_items = soup.find_all('div', class_ = ["a-section", "a-spacing-base", "a-text-center"])
+    for item in clothing_items:
+        pro = item.find_all("a")
+        print(pro)
     pass
 
 def ajio():
@@ -50,4 +57,4 @@ def nykaa(URL):
         pass
 
 
-nykaa("S")
+amazon()
