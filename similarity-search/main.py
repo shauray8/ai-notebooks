@@ -1,6 +1,6 @@
 import numpy as np
 import argparse
-from embedd import create_embeddings
+from embedd import create_embeddings, decode_embeddings
 from gather import *
 import faiss
 
@@ -24,9 +24,8 @@ if __name__ == "__main__":
         index = faiss.read_index("my_index.index")
         D,I = index.search(prompt, 1)
         most_sim = I[0][0]
-        print(most_sim)
-        most_similar_embedding = index.reconstruct(most_sim)
-        print(most_similar_embedding)
+        most_similar_embedding = index.reconstruct(int(I[0][0]))
+        print(decode_embeddings(most_similar_embedding))
     else:
         #parse_data(args.site, args.prompt)
         disc = {"""https://www.nykaa.com/rsvp-by-nykaa-fashion-beige-the-power-of-coord-set/p/5216375?productId=5216375&pps=1&skuId=5216351""":"""Product Details: This co-ord set features a crop top with square neckline, thick shoulder straps, centre front mock button placket and a smocked back for ease. It has a pair of flared pants with an elasticated back.
