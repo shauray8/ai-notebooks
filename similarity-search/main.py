@@ -1,4 +1,5 @@
 import numpy as np
+import json
 import argparse
 from embedd import create_embeddings, decode_embeddings
 from gather import *
@@ -25,7 +26,11 @@ if __name__ == "__main__":
         D,I = index.search(prompt, 1)
         most_sim = I[0][0]
         most_similar_embedding = index.reconstruct(int(I[0][0]))
-        print(decode_embeddings(most_similar_embedding))
+        with open('data.json') as file:
+            data = json.load(file)
+
+        for i in data.items():
+            print(i)
     else:
         #parse_data(args.site, args.prompt)
         disc = {"""https://www.nykaa.com/rsvp-by-nykaa-fashion-beige-the-power-of-coord-set/p/5216375?productId=5216375&pps=1&skuId=5216351""":"""Product Details: This co-ord set features a crop top with square neckline, thick shoulder straps, centre front mock button placket and a smocked back for ease. It has a pair of flared pants with an elasticated back.
@@ -45,11 +50,15 @@ if __name__ == "__main__":
         data = {}
         for i in disc.items():
             embedding = create_embeddings(i[1])
-            data[f"item1"] = {'URL' : i[0], 'embedding' : embedding,}
+            data[i[0]] = {"embedding" : embedding.tolist()}
             embedding = embedding.reshape(1,-1)
             index = faiss.IndexFlatL2(embedding.shape[1])
             index.add(embedding)
             faiss.write_index(index, "my_index.index")
+
+        json_data = json.dumps(data)
+        with open('data.json', 'w') as file:
+            file.write(json_data)
         print(data)
 
 
