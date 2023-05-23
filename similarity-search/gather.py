@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
-
+import json
+from tqdm import trange
 
 ## convert to class maybe
 
@@ -19,7 +20,27 @@ def parse_data(site, URL):
 
 
 def myntraa():
-    pass
+    data = {}
+    for i in trange(500):
+        URL = f"https://www.flipkart.com/search?q=clothing&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page={i}"
+        response = requests.get(URL)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        clothing_items = soup.find_all('a', class_ = "_2UzuFa")
+        for item in trange(len(clothing_items)):
+            try:
+                new = "https://www.flipkart.com"+clothing_items[item].get("href")
+                response = requests.get(new)
+                soup = BeautifulSoup(response.content, 'html.parser')
+                items = soup.find('div', class_ = "X3BRps").text
+                title = soup.find('span', class_ = "B_NuCI").text
+                data[new] = title + " " + items
+            except:
+                pass
+
+    
+    json_data = json.dumps(data)
+    with open('raw_data.json', 'w') as file:
+        file.write(json_data)
 
 def amazon():
     URL = "https://www.amazon.in/s?k=clothing&i=apparel&ref=nb_sb_noss_1"
@@ -57,4 +78,4 @@ def nykaa(URL):
         pass
 
 
-amazon()
+myntraa()

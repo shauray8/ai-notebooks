@@ -8,7 +8,7 @@ def my():
     res = s.get("https://www.myntra.com/sports-shoes/puma/puma-men-blue-hybrid-fuego-running-shoes/11203218/buy", headers=headers, verify=False)
 
     soup = BeautifulSoup(res.text,"lxml")
-
+    print(soup)
     script = None
     for s in soup.find_all("script"):
         if 'pdpData' in s.text:
@@ -21,16 +21,19 @@ def my():
 
 def some():
     s = requests.Session()
-    res = s.get("https://www.nykaa.com/twenty-dresses-by-nykaa-fashion-basics-navy-blue-slogan-printed-crop-tshirt/p/6583572?productId=6583572&pps=2&skuId=6583557", verify=False)
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"}
+    res = s.get("https://www.myntra.com/clothing?src=bc&p=1", headers = headers, verify=False)
 
-    soup = BeautifulSoup(res.text,"lxml")
+    soup = BeautifulSoup(res.text,"html.parser")
 
+    print(soup)
     script = None
     for s in soup.find_all("script"):
-        if 'pdpData' in s.text:
+        if 'products' in s.text:
             script = s.get_text(strip=True)
             break
 
+    print(script)
     a = json.loads(script[script.index('{'):])
     print(a)
 

@@ -1,35 +1,22 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
+import requests
+from bs4 import BeautifulSoup
 
-# Set the path to your chromedriver executable
-webdriver_service = Service('path/to/chromedriver')
+def get_page_links(url):
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36'}
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    links = []
 
-# Set the options for the Chrome browser
-options = webdriver.ChromeOptions()
-options.add_argument('--headless')  # Run Chrome in headless mode
+    for link in soup.find_all('a'):
+        return link
+        href = link.get('href')
+        if href and href.startswith('https://www.myntra.com/'):
+            links.append(href)
 
-# Create a new instance of the Chrome driver
-driver = webdriver.Chrome(service=webdriver_service, options=options)
+    return links
 
-# Set the URL of the page to scrape
 page_url = 'https://www.myntra.com/clothing?src=bc&p=1'
+links = get_page_links(page_url)
 
-# Navigate to the page
-driver.get(page_url)
-
-# Find all the links on the page
-links = driver.find_elements(By.TAG_NAME, 'a')
-
-# Extract the href attribute from each link
-page_links = [link.get_attribute('href') for link in links]
-
-# Filter the links to include only those starting with 'https://www.myntra.com/'
-myntra_links = [link for link in page_links if link.startswith('https://www.myntra.com/')]
-
-# Print the links
-for link in myntra_links:
+for link in links:
     print(link)
-
-# Quit the driver
-driver.quit()
