@@ -1,0 +1,7 @@
+numpy 
+tqdm
+sentence_transformers
+faiss-gpu
+bs4
+scrapy
+json
