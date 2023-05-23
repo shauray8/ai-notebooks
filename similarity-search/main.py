@@ -1,8 +1,8 @@
 import numpy as np
 import json
 import argparse
-from embedd import create_embeddings, decode_embeddings
-from gather import *
+from embedd import create_embeddings
+#from gather import *
 import faiss
 
 parser = argparse.ArgumentParser(description='PyTorch U square net training on comma 10k dataset',
@@ -25,6 +25,7 @@ if __name__ == "__main__":
         index = faiss.read_index("my_index.index")
         D,I = index.search(prompt, 1)
         most_sim = I[0][0]
+        print(D,I)
         most_similar_embedding = index.reconstruct(int(I[0][0]))
         with open('data.json') as file:
             data = json.load(file)
@@ -36,21 +37,20 @@ if __name__ == "__main__":
         #parse_data(args.site, args.prompt)
         with open("raw_data.json") as file:
             disc = json.load(file)
-
         data = {}
         for i in disc.items():
             embedding = create_embeddings(i[1])
             data[i[0]] = embedding.tolist()
             embedding = embedding.reshape(1,-1)
             index = faiss.IndexFlatL2(embedding.shape[1])
-            index.add(embedding)
-            faiss.write_index(index, "my_index.index")
+            try:
+                embeddings = np.concatenate((embeddings, embedding), axis=0)
+            except:
+                embeddings = embedding
+        index.add(embeddings)
+        faiss.write_index(index, "my_index.index")
 
         json_data = json.dumps(data)
         with open('data.json', 'w') as file:
             file.write(json_data)
-        print(data)
-
-
-
     pass

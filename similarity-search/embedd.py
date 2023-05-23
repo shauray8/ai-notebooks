@@ -16,4 +16,3 @@ def decode_embeddings(prompt):
     print(embeddings)
     return embeddings
 
-decode_embeddings(create_embeddings("how are you"))
