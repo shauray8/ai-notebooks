@@ -32,6 +32,14 @@ The project scrapes data from various websites such as Flipkart and Myntraa to c
 4. run the script <br>
 ```python main.py --mode test --prompt "enter your prompt"```
 
+## Navigation 
+1. Main function and script <br>
+`./main.py`
+2. Data Gathering function
+* run if you want to generate more data or add more website scraping functions<br>
+`./gather.py`
+3. Decoding and Encoding embedding functions<br> 
+`./embedd.py`
 
 
 ## Model and Similarity Search
