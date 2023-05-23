@@ -34,19 +34,8 @@ if __name__ == "__main__":
                 print(i[0])
     else:
         #parse_data(args.site, args.prompt)
-        disc = {"""https://www.nykaa.com/rsvp-by-nykaa-fashion-beige-the-power-of-coord-set/p/5216375?productId=5216375&pps=1&skuId=5216351""":"""Product Details: This co-ord set features a crop top with square neckline, thick shoulder straps, centre front mock button placket and a smocked back for ease. It has a pair of flared pants with an elasticated back.
-
-        Product Color: Beige.
-
-        Fabric: Polyester Crepe with Polyester Knit Lining.
-
-        Style Note: Feminine and stylish, this coord set is your go to for any ocassion! Style it with a strappy heels, a pendant necklace and a handbag for party or even vacation! - says Akshita Singh our inhouse stylist.
-
-        Additional Information: Top length ranges from 11.3-13.18 inches; Palazzo length ranges from 40.25-42 inches.
-
-        Fit: Comfort.
-
-        Closure: Concealed side zipper and hook.""", """https://www.nykaa.com/twenty-dresses-by-nykaa-fashion-basics-navy-blue-slogan-printed-crop-tshirt/p/6583572?productId=6583572&pps=2&skuId=6583557""" : """This basic navy blue t-shirt from Twenty Dresses by Nykaa Fashion is a must-have. It gives your wardrobe a versatility of style and a breathable fit. Style with denim skirt, a pair of sneakers, and sunglasses to go on a long drive with your group of friends."""}
+        with open("raw_data.json") as file:
+            disc = json.load(file)
 
         data = {}
         for i in disc.items():

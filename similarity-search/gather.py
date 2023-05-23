@@ -38,9 +38,9 @@ def myntraa():
                 pass
 
     
-    json_data = json.dumps(data)
-    with open('raw_data.json', 'w') as file:
-        file.write(json_data)
+        json_data = json.dumps(data)
+        with open('raw_data.json', 'w') as file:
+            file.write(json_data)
 
 def amazon():
     URL = "https://www.amazon.in/s?k=clothing&i=apparel&ref=nb_sb_noss_1"
@@ -78,4 +78,5 @@ def nykaa(URL):
         pass
 
 
-myntraa()
+if __name__ == "__main__":
+    myntraa()
