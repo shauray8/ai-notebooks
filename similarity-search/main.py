@@ -23,16 +23,18 @@ if __name__ == "__main__":
         prompt = create_embeddings(args.prompt)
         prompt = prompt.reshape(1,-1)
         index = faiss.read_index("my_index.index")
-        D,I = index.search(prompt, 1)
+        D,I = index.search(prompt, 2)
         most_sim = I[0][0]
         print(D,I)
-        most_similar_embedding = index.reconstruct(int(I[0][0]))
         with open('data.json') as file:
             data = json.load(file)
 
-        for i in data.items():
-            if np.array_equal(np.array(i[1]), most_similar_embedding):
-                print(i[0])
+        for k in range(2):
+            most_similar_embedding = index.reconstruct(int(I[0][k]))
+            for i in data.items():
+                if np.array_equal(np.array(i[1]), most_similar_embedding):
+                    print(i[0])
+                    break
     else:
         #parse_data(args.site, args.prompt)
         with open("raw_data.json") as file:

@@ -136,3 +136,6 @@ beautify/assets/
 
 ./mnist_scratch/tmp/*
 >>>>>>> 428f1bd37a0159ddafcb9f19c43ada0ee4e575c6
+
+
+/similarity-search/useless_data/*
