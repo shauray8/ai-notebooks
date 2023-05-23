@@ -2,6 +2,8 @@
 # Clothing Similarity Model
 
 The goal of this project is to create a machine learning model capable of receiving text describing a clothing item and returning a ranked list of links to similar items from different websites. This solution is implemented as a function deployed on Google Cloud, which accepts a text string and returns JSON responses with ranked suggestions. To further improve the results we used a vector database which would in return increase the accuracy of the model.
+<br>
+ you can run this locally - it's just as easy as writing this in your terminal ```./run.sh "prompt"``` 
 
 ## Project Overview
 
