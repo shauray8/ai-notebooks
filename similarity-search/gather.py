@@ -23,7 +23,7 @@ def myntraa():
     data = {}
     with open("raw_data.json") as file:
         data = json.load(file)
-    for i in trange(500):
+    for i in trange(1, 500):
         URL = f"https://www.flipkart.com/search?q=clothing&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page={i}"
         response = requests.get(URL)
         soup = BeautifulSoup(response.content, 'html.parser')
